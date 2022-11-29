@@ -67,6 +67,7 @@ const display = () => {
     divInfo.appendChild(color);
     divInfo.appendChild(weight);
   }
+  console.log(fruits)
 };
 
 // первая отрисовка карточек
@@ -191,6 +192,19 @@ sortActionButton.addEventListener('click', () => {
 
 addActionButton.addEventListener('click', () => {
   // TODO: создание и добавление нового фрукта в массив fruits
-  // необходимые значения берем из kindInput, colorInput, weightInput
-  display();
+  if (kindInput.value == '' || colorInput.value == '' || weightInput.value == '' || parseInt(weightInput.value) < 1 || isNaN(parseInt(weightInput.value))) {
+    alert ("Введите корректные значения")
+  } else {
+    let newFruit = { 
+      kind : kindInput.value,
+      color : colorInput.value,
+      weight : weightInput.value
+    };
+    fruits.push(newFruit);
+    console.log(fruits);
+    display();
+  }
+  kindInput.value = '';
+  colorInput.value = '';
+  weightInput.value = '';
 });
